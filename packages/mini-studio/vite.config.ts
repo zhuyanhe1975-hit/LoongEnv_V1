@@ -15,5 +15,18 @@ export default defineConfig({
       allow: ['..']
     }
   },
-  assetsInclude: ['**/*.STL', '**/*.stl']
+  assetsInclude: ['**/*.STL', '**/*.stl'],
+  define: {
+    global: 'globalThis',
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
+  esbuild: {
+    target: 'es2020'
+  }
 })

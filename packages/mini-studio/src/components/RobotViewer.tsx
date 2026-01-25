@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Grid } from '@react-three/drei';
 import * as THREE from 'three';
@@ -73,7 +73,9 @@ const RobotViewer: React.FC<RobotViewerProps> = ({ robot }) => {
         </group>
         
         {/* 机械臂模型 */}
-        <RobotModel robot={robot} />
+        <Suspense fallback={null}>
+          <RobotModel robot={robot} />
+        </Suspense>
       </Canvas>
     </div>
   );

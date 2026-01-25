@@ -9,7 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
-    "@react-three/drei": "^9.88.0",
+    "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.15.0",
     "@types/three": "^0.158.0",
     "antd": "^5.12.0",

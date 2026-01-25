@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Grid, Axes } from '@react-three/drei';
+import { OrbitControls, Grid } from '@react-three/drei';
 import * as THREE from 'three';
 import type { MiniRobot } from '@/types';
 
@@ -101,7 +101,25 @@ const RobotViewer: React.FC<RobotViewerProps> = ({ robot }) => {
           sectionThickness={1}
           sectionColor="#7f8c8d"
         />
-        <Axes scale={[100, 100, 100]} />
+        
+        {/* 自定义坐标轴 */}
+        <group>
+          {/* X轴 - 红色 */}
+          <mesh position={[50, 0, 0]} rotation={[0, 0, -Math.PI / 2]}>
+            <cylinderGeometry args={[1, 1, 100]} />
+            <meshBasicMaterial color="#ff0000" />
+          </mesh>
+          {/* Y轴 - 绿色 */}
+          <mesh position={[0, 50, 0]}>
+            <cylinderGeometry args={[1, 1, 100]} />
+            <meshBasicMaterial color="#00ff00" />
+          </mesh>
+          {/* Z轴 - 蓝色 */}
+          <mesh position={[0, 0, 50]} rotation={[Math.PI / 2, 0, 0]}>
+            <cylinderGeometry args={[1, 1, 100]} />
+            <meshBasicMaterial color="#0000ff" />
+          </mesh>
+        </group>
         
         {/* 机械臂模型 */}
         <RobotModel robot={robot} />

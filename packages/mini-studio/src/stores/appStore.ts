@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { subscribeWithSelector } from 'zustand/middleware';
 import type { AppState, MiniProject, TrajectoryPoint, DHParameter, JointLimit } from '@/types';
 
 // 默认6轴机械臂DH参数 (标准工业机械臂)
@@ -51,8 +51,7 @@ interface AppStore extends AppState {
 }
 
 export const useAppStore = create<AppStore>()(
-  persist(
-    (set, get) => ({
+  subscribeWithSelector((set, get) => ({
       // 初始状态
       currentProject: null,
       robot: {
@@ -200,14 +199,6 @@ export const useAppStore = create<AppStore>()(
           ui: { ...state.ui, selectedPoint: id },
         }));
       },
-    }),
-    {
-      name: 'mini-loongenv-studio',
-      partialize: (state) => ({
-        currentProject: state.currentProject,
-        robot: state.robot,
-        trajectoryPoints: state.trajectoryPoints,
-      }),
-    }
+    })
   )
 );

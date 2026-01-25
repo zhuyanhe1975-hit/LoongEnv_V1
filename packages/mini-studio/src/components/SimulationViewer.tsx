@@ -1,6 +1,6 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Grid, Axes, Text } from '@react-three/drei';
+import { OrbitControls, Grid, Text } from '@react-three/drei';
 import * as THREE from 'three';
 import type { TrajectoryPoint } from '@/types';
 
@@ -179,7 +179,25 @@ const SimulationViewer: React.FC<SimulationViewerProps> = ({
           sectionThickness={1}
           sectionColor="#7f8c8d"
         />
-        <Axes scale={[20, 20, 20]} />
+        
+        {/* 自定义坐标轴 */}
+        <group>
+          {/* X轴 - 红色 */}
+          <mesh position={[10, 0, 0]} rotation={[0, 0, -Math.PI / 2]}>
+            <cylinderGeometry args={[0.2, 0.2, 20]} />
+            <meshBasicMaterial color="#ff0000" />
+          </mesh>
+          {/* Y轴 - 绿色 */}
+          <mesh position={[0, 10, 0]}>
+            <cylinderGeometry args={[0.2, 0.2, 20]} />
+            <meshBasicMaterial color="#00ff00" />
+          </mesh>
+          {/* Z轴 - 蓝色 */}
+          <mesh position={[0, 0, 10]} rotation={[Math.PI / 2, 0, 0]}>
+            <cylinderGeometry args={[0.2, 0.2, 20]} />
+            <meshBasicMaterial color="#0000ff" />
+          </mesh>
+        </group>
         
         {/* 动画路径和机械臂 */}
         <AnimatedPath 

@@ -1,10 +1,8 @@
 import React, { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Grid } from '@react-three/drei';
 import * as THREE from 'three';
 import type { MiniRobot } from '@/types';
-import { useAppStore } from '@/stores/appStore';
-import { getRobotPreset } from '@/utils/robotPresets';
 import ER15RobotModel from './ER15RobotModel';
 
 interface RobotViewerProps {
@@ -13,11 +11,9 @@ interface RobotViewerProps {
 
 // ER15-1400专用机械臂模型组件
 const RobotModel: React.FC<{ robot: MiniRobot }> = ({ robot }) => {
+  const groupRef = useRef<THREE.Group>(null);
+  
   // 直接使用ER15-1400模型
-  return <ER15RobotModel robot={robot} />;
-};
-
-  // 简化的机械臂渲染 - 直接使用ER15模型
   return (
     <group ref={groupRef}>
       <ER15RobotModel robot={robot} />

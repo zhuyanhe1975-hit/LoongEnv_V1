@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 import type { AppState, MiniProject, TrajectoryPoint, DHParameter, JointLimit } from '@/types';
+import { getRobotPreset, presetToRobot } from '@/utils/robotPresets';
 
 // 默认6轴机械臂DH参数 (标准工业机械臂)
 const defaultDHParams: DHParameter[] = [
@@ -32,6 +33,7 @@ interface AppStore extends AppState {
   updateDHParam: (joint: number, param: Partial<DHParameter>) => void;
   updateJointLimit: (joint: number, limit: Partial<JointLimit>) => void;
   resetRobotToDefault: () => void;
+  loadRobotPreset: (presetId: string) => void;
   
   // 轨迹操作
   addTrajectoryPoint: (point: Omit<TrajectoryPoint, 'id'>) => void;
@@ -129,6 +131,14 @@ export const useAppStore = create<AppStore>()(
             jointLimits: defaultJointLimits,
           },
         });
+      },
+
+      loadRobotPreset: (presetId) => {
+        const preset = getRobotPreset(presetId);
+        if (preset) {
+          const robot = presetToRobot(preset);
+          set({ robot });
+        }
       },
 
       // 轨迹操作

@@ -1,13 +1,14 @@
 import React from 'react';
-import { Row, Col, Card, Table, InputNumber, Button, Typography, Space } from 'antd';
-import { ReloadOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import { Row, Col, Card, Table, InputNumber, Button, Typography, Space, Select } from 'antd';
+import { ReloadOutlined, CheckCircleOutlined, RobotOutlined } from '@ant-design/icons';
 import { useAppStore } from '@/stores/appStore';
+import { robotPresets } from '@/utils/robotPresets';
 import RobotViewer from '@/components/RobotViewer';
 
 const { Title, Text } = Typography;
 
 const RobotPage: React.FC = () => {
-  const { robot, updateDHParam, updateJointLimit, resetRobotToDefault } = useAppStore();
+  const { robot, updateDHParam, updateJointLimit, resetRobotToDefault, loadRobotPreset } = useAppStore();
 
   const dhColumns = [
     {
@@ -132,9 +133,25 @@ const RobotPage: React.FC = () => {
                 >
                   重置默认
                 </Button>
-                <Button type="primary">
-                  加载预设
-                </Button>
+                <Select
+                  placeholder="选择预设模型"
+                  style={{ width: 200 }}
+                  onChange={loadRobotPreset}
+                >
+                  {robotPresets.map(preset => (
+                    <Select.Option key={preset.id} value={preset.id}>
+                      <Space>
+                        <RobotOutlined />
+                        <div>
+                          <div>{preset.name}</div>
+                          <div style={{ fontSize: '12px', color: '#666' }}>
+                            {preset.manufacturer} | 负载{preset.workspace.payload}kg | 半径{preset.workspace.reach}mm
+                          </div>
+                        </div>
+                      </Space>
+                    </Select.Option>
+                  ))}
+                </Select>
               </Space>
             </div>
           </Card>

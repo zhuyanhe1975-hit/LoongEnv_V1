@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 import { Card, Input, Button, Select, Space, Typography, Divider } from 'antd';
-import { PlusOutlined, DeleteOutlined, ImportOutlined } from '@ant-design/icons';
+import { PlusOutlined, DeleteOutlined, ImportOutlined, RobotOutlined } from '@ant-design/icons';
 import { useAppStore } from '@/stores/appStore';
+import { robotPresets } from '@/utils/robotPresets';
 
 const { Title, Text } = Typography;
 const { TextArea } = Input;
 
 const ProjectPage: React.FC = () => {
-  const { currentProject, createProject, updateProject } = useAppStore();
+  const { currentProject, createProject, updateProject, loadRobotPreset } = useAppStore();
   const [isCreating, setIsCreating] = useState(false);
   const [projectName, setProjectName] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
+  const [selectedRobotType, setSelectedRobotType] = useState('standard_6axis');
 
   const handleCreateProject = () => {
     if (projectName.trim()) {
       createProject(projectName.trim(), projectDescription.trim());
+      // 加载选择的机械臂预设
+      loadRobotPreset(selectedRobotType);
       setProjectName('');
       setProjectDescription('');
+      setSelectedRobotType('standard_6axis');
       setIsCreating(false);
     }
   };
@@ -109,11 +114,23 @@ const ProjectPage: React.FC = () => {
           <div>
             <Text strong>机械臂类型</Text>
             <Select
-              value="industrial_6axis"
-              disabled
+              value={selectedRobotType}
+              onChange={setSelectedRobotType}
               style={{ width: '100%', marginTop: 8 }}
             >
-              <Select.Option value="industrial_6axis">6轴工业机械臂</Select.Option>
+              {robotPresets.map(preset => (
+                <Select.Option key={preset.id} value={preset.id}>
+                  <Space>
+                    <RobotOutlined />
+                    <div>
+                      <div>{preset.name}</div>
+                      <div style={{ fontSize: '12px', color: '#666' }}>
+                        {preset.manufacturer} | 负载{preset.workspace.payload}kg | 半径{preset.workspace.reach}mm
+                      </div>
+                    </div>
+                  </Space>
+                </Select.Option>
+              ))}
             </Select>
           </div>
           

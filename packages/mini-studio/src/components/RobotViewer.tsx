@@ -3,13 +3,34 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Grid } from '@react-three/drei';
 import * as THREE from 'three';
 import type { MiniRobot } from '@/types';
+import { useAppStore } from '@/stores/appStore';
+import { getRobotPreset } from '@/utils/robotPresets';
+import ER15RobotModel from './ER15RobotModel';
 
 interface RobotViewerProps {
   robot: MiniRobot;
 }
 
-// 简化的机械臂模型组件
-const RobotModel: React.FC<{ robot: MiniRobot }> = ({ robot }) => {
+// 智能机械臂模型组件 - 根据DH参数判断机械臂类型
+const SmartRobotModel: React.FC<{ robot: MiniRobot }> = ({ robot }) => {
+  const groupRef = useRef<THREE.Group>(null);
+
+  // 判断是否为ER15-1400 (基于特征DH参数)
+  const isER15 = robot.dhParams.length === 6 && 
+                 robot.dhParams[0].d === 430 && 
+                 robot.dhParams[1].a === 180 &&
+                 robot.dhParams[2].a === 580;
+
+  if (isER15) {
+    return <ER15RobotModel robot={robot} />;
+  }
+
+  // 默认通用机械臂模型
+  return <GenericRobotModel robot={robot} />;
+};
+
+// 通用机械臂模型组件
+const GenericRobotModel: React.FC<{ robot: MiniRobot }> = ({ robot }) => {
   const groupRef = useRef<THREE.Group>(null);
 
   // 简化的机械臂渲染 - 使用基本几何体表示各关节
@@ -122,7 +143,7 @@ const RobotViewer: React.FC<RobotViewerProps> = ({ robot }) => {
         </group>
         
         {/* 机械臂模型 */}
-        <RobotModel robot={robot} />
+        <SmartRobotModel robot={robot} />
       </Canvas>
     </div>
   );

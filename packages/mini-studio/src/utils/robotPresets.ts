@@ -42,20 +42,20 @@ const standardIndustrial6Axis: RobotPreset = {
   },
 };
 
-// ER15-1400 机械臂 (基于URDF文件解析)
+// ER15-1400 机械臂 (基于ER15-1400-fulldyn-local.urdf文件解析)
 const er15_1400: RobotPreset = {
   id: 'er15_1400',
   name: 'ER15-1400',
   description: '15kg负载，1400mm工作半径的工业机械臂',
   manufacturer: 'EFORT',
   dhParams: [
-    // 基于URDF文件的关节变换解析得出的DH参数
-    { joint: 1, a: 0, d: 430, theta: 0, alpha: 0 },        // base_link -> link_1
-    { joint: 2, a: 180, d: 0, theta: -90, alpha: 90 },     // link_1 -> link_2  
-    { joint: 3, a: 580, d: 0, theta: 0, alpha: 0 },        // link_2 -> link_3
-    { joint: 4, a: 160, d: 640, theta: 0, alpha: -90 },    // link_3 -> link_4
-    { joint: 5, a: 0, d: 0, theta: 0, alpha: 90 },         // link_4 -> link_5
-    { joint: 6, a: 0, d: 116, theta: 0, alpha: 0 },        // link_5 -> link_6
+    // 基于URDF关节变换的精确DH参数
+    { joint: 1, a: 0, d: 430, theta: 0, alpha: 0 },        // joint_1: xyz="0 0 0.43"
+    { joint: 2, a: 180, d: 0, theta: -90, alpha: 90 },     // joint_2: xyz="0.18 0 0" rpy="1.57 -1.57 0"
+    { joint: 3, a: 580, d: 0, theta: 0, alpha: 0 },        // joint_3: xyz="0.58 0 0"
+    { joint: 4, a: 160, d: 640, theta: 0, alpha: -90 },    // joint_4: xyz="0.16 -0.64 0" rpy="-1.57 0 3.14"
+    { joint: 5, a: 0, d: 0, theta: 0, alpha: 90 },         // joint_5: xyz="0 0 0" rpy="-1.57 0 3.14"
+    { joint: 6, a: 0, d: 116, theta: 0, alpha: 0 },        // joint_6: xyz="0 -0.116 0" rpy="1.57 0 0"
   ],
   jointLimits: [
     // 从URDF文件中提取的关节限制 (弧度转换为度)

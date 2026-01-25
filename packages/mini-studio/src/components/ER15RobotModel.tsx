@@ -22,6 +22,9 @@ const ER15RobotModel: React.FC<ER15RobotModelProps> = ({ robot }) => {
       [10, 20, 10],   // Joint 6 - 末端
     ];
 
+    // 防止数组越界
+    if (index >= sizes.length) return null;
+
     return (
       <group key={index} position={position}>
         {/* 关节主体 */}
@@ -51,13 +54,12 @@ const ER15RobotModel: React.FC<ER15RobotModelProps> = ({ robot }) => {
   const calculateER15Positions = () => {
     const positions: [number, number, number][] = [];
     
-    // ER15-1400的实际关节位置 (简化版)
-    positions.push([0, 0, 0]);           // 基座
-    positions.push([0, 0, 43]);          // Joint 1 (d=430mm -> 43 in scale)
-    positions.push([18, 0, 43]);         // Joint 2 (a=180mm -> 18 in scale)
-    positions.push([76, 0, 43]);         // Joint 3 (a=580mm -> 58 in scale)
-    positions.push([92, 0, 107]);        // Joint 4 (a=160mm, d=640mm)
-    positions.push([92, 0, 107]);        // Joint 5
+    // ER15-1400的6个关节位置 (简化版)
+    positions.push([0, 0, 0]);           // Joint 1 - 基座
+    positions.push([0, 0, 43]);          // Joint 2 (d=430mm -> 43 in scale)
+    positions.push([18, 0, 43]);         // Joint 3 (a=180mm -> 18 in scale)
+    positions.push([76, 0, 43]);         // Joint 4 (a=580mm -> 58 in scale)
+    positions.push([92, 0, 107]);        // Joint 5 (a=160mm, d=640mm)
     positions.push([92, -11.6, 107]);    // Joint 6 (d=116mm -> 11.6 in scale)
     
     return positions;

@@ -14,34 +14,6 @@ export interface RobotPreset {
   };
 }
 
-// 标准6轴工业机械臂 (默认)
-const standardIndustrial6Axis: RobotPreset = {
-  id: 'standard_6axis',
-  name: '标准6轴工业机械臂',
-  description: '通用6轴工业机械臂模型',
-  manufacturer: '通用',
-  dhParams: [
-    { joint: 1, a: 0, d: 0, theta: 0, alpha: 90 },
-    { joint: 2, a: 420, d: 0, theta: -90, alpha: 0 },
-    { joint: 3, a: 400, d: 0, theta: 0, alpha: 90 },
-    { joint: 4, a: 0, d: 380, theta: 0, alpha: -90 },
-    { joint: 5, a: 0, d: 0, theta: 0, alpha: 90 },
-    { joint: 6, a: 0, d: 65, theta: 0, alpha: 0 },
-  ],
-  jointLimits: [
-    { joint: 1, min: -180, max: 180 },
-    { joint: 2, min: -90, max: 135 },
-    { joint: 3, min: -180, max: 70 },
-    { joint: 4, min: -180, max: 180 },
-    { joint: 5, min: -120, max: 120 },
-    { joint: 6, min: -360, max: 360 },
-  ],
-  workspace: {
-    reach: 1200,
-    payload: 10,
-  },
-};
-
 // ER15-1400 机械臂 (基于ER15-1400-fulldyn-local.urdf文件解析)
 const er15_1400: RobotPreset = {
   id: 'er15_1400',
@@ -72,9 +44,8 @@ const er15_1400: RobotPreset = {
   },
 };
 
-// 机械臂预设库
+// 机械臂预设库 (仅包含ER15-1400)
 export const robotPresets: RobotPreset[] = [
-  standardIndustrial6Axis,
   er15_1400,
 ];
 

@@ -11,82 +11,16 @@ interface RobotViewerProps {
   robot: MiniRobot;
 }
 
-// 智能机械臂模型组件 - 根据DH参数判断机械臂类型
-const SmartRobotModel: React.FC<{ robot: MiniRobot }> = ({ robot }) => {
-  const groupRef = useRef<THREE.Group>(null);
-
-  // 判断是否为ER15-1400 (基于特征DH参数)
-  const isER15 = robot.dhParams.length === 6 && 
-                 robot.dhParams[0].d === 430 && 
-                 robot.dhParams[1].a === 180 &&
-                 robot.dhParams[2].a === 580;
-
-  if (isER15) {
-    return <ER15RobotModel robot={robot} />;
-  }
-
-  // 默认通用机械臂模型
-  return <GenericRobotModel robot={robot} />;
+// ER15-1400专用机械臂模型组件
+const RobotModel: React.FC<{ robot: MiniRobot }> = ({ robot }) => {
+  // 直接使用ER15-1400模型
+  return <ER15RobotModel robot={robot} />;
 };
 
-// 通用机械臂模型组件
-const GenericRobotModel: React.FC<{ robot: MiniRobot }> = ({ robot }) => {
-  const groupRef = useRef<THREE.Group>(null);
-
-  // 简化的机械臂渲染 - 使用基本几何体表示各关节
-  const renderJoint = (index: number, position: [number, number, number]) => {
-    return (
-      <group key={index} position={position}>
-        {/* 关节 */}
-        <mesh>
-          <cylinderGeometry args={[20, 20, 40]} />
-          <meshStandardMaterial color={index === 0 ? '#ff6b6b' : '#4ecdc4'} />
-        </mesh>
-        
-        {/* 连杆 */}
-        {index < 5 && (
-          <mesh position={[0, 30, 0]}>
-            <boxGeometry args={[15, 60, 15]} />
-            <meshStandardMaterial color="#95a5a6" />
-          </mesh>
-        )}
-        
-        {/* 关节标签 */}
-        <mesh position={[0, 0, 25]}>
-          <sphereGeometry args={[5]} />
-          <meshBasicMaterial color="#e74c3c" />
-        </mesh>
-      </group>
-    );
-  };
-
-  // 根据DH参数计算关节位置 (简化版)
-  const calculateJointPositions = () => {
-    const positions: [number, number, number][] = [];
-    let z = 0;
-    
-    robot.dhParams.forEach((param, index) => {
-      positions.push([0, 0, z]);
-      z += param.d + 50; // 简化的高度计算
-    });
-    
-    return positions;
-  };
-
-  const jointPositions = calculateJointPositions();
-
+  // 简化的机械臂渲染 - 直接使用ER15模型
   return (
     <group ref={groupRef}>
-      {/* 基座 */}
-      <mesh position={[0, 0, -20]}>
-        <cylinderGeometry args={[40, 40, 40]} />
-        <meshStandardMaterial color="#34495e" />
-      </mesh>
-      
-      {/* 各关节 */}
-      {jointPositions.map((position, index) => 
-        renderJoint(index, position)
-      )}
+      <ER15RobotModel robot={robot} />
     </group>
   );
 };
@@ -143,7 +77,7 @@ const RobotViewer: React.FC<RobotViewerProps> = ({ robot }) => {
         </group>
         
         {/* 机械臂模型 */}
-        <SmartRobotModel robot={robot} />
+        <RobotModel robot={robot} />
       </Canvas>
     </div>
   );

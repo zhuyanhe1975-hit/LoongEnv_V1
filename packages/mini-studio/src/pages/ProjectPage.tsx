@@ -12,7 +12,7 @@ const ProjectPage: React.FC = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [projectName, setProjectName] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
-  const [selectedRobotType, setSelectedRobotType] = useState('standard_6axis');
+  const [selectedRobotType, setSelectedRobotType] = useState('er15_1400');
 
   const handleCreateProject = () => {
     if (projectName.trim()) {
@@ -21,7 +21,7 @@ const ProjectPage: React.FC = () => {
       loadRobotPreset(selectedRobotType);
       setProjectName('');
       setProjectDescription('');
-      setSelectedRobotType('standard_6axis');
+      setSelectedRobotType('er15_1400');
       setIsCreating(false);
     }
   };

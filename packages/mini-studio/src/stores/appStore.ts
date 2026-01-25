@@ -3,23 +3,23 @@ import { subscribeWithSelector } from 'zustand/middleware';
 import type { AppState, MiniProject, TrajectoryPoint, DHParameter, JointLimit } from '@/types';
 import { getRobotPreset, presetToRobot } from '@/utils/robotPresets';
 
-// 默认6轴机械臂DH参数 (标准工业机械臂)
+// 默认ER15-1400机械臂DH参数
 const defaultDHParams: DHParameter[] = [
-  { joint: 1, a: 0, d: 0, theta: 0, alpha: 90 },
-  { joint: 2, a: 420, d: 0, theta: -90, alpha: 0 },
-  { joint: 3, a: 400, d: 0, theta: 0, alpha: 90 },
-  { joint: 4, a: 0, d: 380, theta: 0, alpha: -90 },
+  { joint: 1, a: 0, d: 430, theta: 0, alpha: 0 },
+  { joint: 2, a: 180, d: 0, theta: -90, alpha: 90 },
+  { joint: 3, a: 580, d: 0, theta: 0, alpha: 0 },
+  { joint: 4, a: 160, d: 640, theta: 0, alpha: -90 },
   { joint: 5, a: 0, d: 0, theta: 0, alpha: 90 },
-  { joint: 6, a: 0, d: 65, theta: 0, alpha: 0 },
+  { joint: 6, a: 0, d: 116, theta: 0, alpha: 0 },
 ];
 
-// 默认关节限制
+// 默认ER15-1400关节限制
 const defaultJointLimits: JointLimit[] = [
-  { joint: 1, min: -180, max: 180 },
-  { joint: 2, min: -90, max: 135 },
-  { joint: 3, min: -180, max: 70 },
-  { joint: 4, min: -180, max: 180 },
-  { joint: 5, min: -120, max: 120 },
+  { joint: 1, min: -170, max: 170 },
+  { joint: 2, min: -160, max: 90 },
+  { joint: 3, min: -85, max: 175 },
+  { joint: 4, min: -190, max: 190 },
+  { joint: 5, min: -130, max: 130 },
   { joint: 6, min: -360, max: 360 },
 ];
 

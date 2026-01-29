@@ -675,7 +675,7 @@ class ParameterTuner:
         test_scenarios: List[Dict[str, Any]]
     ) -> float:
         """
-        评估控制性能
+        评估控制性能（改进版 - 包含简单动力学模型）
         
         Args:
             params: 控制参数
@@ -692,49 +692,114 @@ class ParameterTuner:
             total_score = 0.0
             scenario_count = 0
             
+            # 控制周期
+            dt = 0.001  # 1ms
+            
             for scenario in test_scenarios:
                 # 模拟控制过程
                 tracking_errors = []
                 energy_consumption = 0.0
                 vibration_levels = []
                 
-                # 简化的仿真循环
+                # 初始状态
                 current_state = scenario.get('initial_state')
                 if current_state is None:
                     continue
                 
-                for ref_point in reference_trajectory:
+                # 复制状态以避免修改原始数据
+                q = current_state.joint_positions.copy()  # 位置
+                v = current_state.joint_velocities.copy()  # 速度
+                a = current_state.joint_accelerations.copy()  # 加速度
+                
+                # 上一次的加速度（用于计算加加速度）
+                a_prev = a.copy()
+                
+                for i, ref_point in enumerate(reference_trajectory):
+                    # 更新当前状态对象
+                    current_state.joint_positions = q.copy()
+                    current_state.joint_velocities = v.copy()
+                    current_state.joint_accelerations = a.copy()
+                    
                     # 计算控制指令
                     control_cmd = self.path_controller.compute_control(
                         ref_point, current_state
                     )
                     
-                    # 计算跟踪误差
-                    error = np.linalg.norm(
-                        current_state.joint_positions - ref_point.position
-                    )
+                    # 计算跟踪误差（在状态更新前）
+                    error = np.linalg.norm(q - ref_point.position)
                     tracking_errors.append(error)
                     
-                    # 计算能耗（简化）
+                    # 使用简单的动力学模型更新状态
                     if control_cmd.joint_torques is not None:
-                        energy_consumption += np.sum(np.abs(control_cmd.joint_torques))
+                        # 方法1：使用力矩更新（如果有力矩输出）
+                        tau = control_cmd.joint_torques
+                        
+                        # 简化的动力学：τ = M*a + D*v
+                        # 假设单位质量矩阵和简单阻尼
+                        mass = 1.0  # 简化假设
+                        damping = 0.5  # 阻尼系数
+                        
+                        # 计算加速度：a = (τ - D*v) / M
+                        a = (tau - damping * v) / mass
+                        
+                        # 更新速度和位置（欧拉积分）
+                        v = v + a * dt
+                        q = q + v * dt
+                        
+                        # 计算能耗
+                        energy_consumption += np.sum(np.abs(tau)) * dt
+                        
+                    elif control_cmd.joint_positions is not None:
+                        # 方法2：使用位置控制（如果只有位置输出）
+                        # 使用一阶滤波器模拟执行器响应
+                        target_pos = control_cmd.joint_positions
+                        
+                        # 响应速度参数（0-1之间，越大响应越快）
+                        alpha = 0.2
+                        
+                        # 计算位置变化
+                        delta_q = target_pos - q
+                        
+                        # 应用一阶滤波
+                        q = q + alpha * delta_q
+                        
+                        # 估算速度
+                        if i > 0:
+                            v = delta_q / dt
+                        
+                        # 估算加速度
+                        a = (v - current_state.joint_velocities) / dt
+                        
+                        # 估算力矩（用于能耗计算）
+                        estimated_tau = a * 1.0 + v * 0.5  # M*a + D*v
+                        energy_consumption += np.sum(np.abs(estimated_tau)) * dt
                     
-                    # 更新状态（简化）
-                    if control_cmd.joint_positions is not None:
-                        current_state.joint_positions = control_cmd.joint_positions.copy()
+                    else:
+                        # 如果没有控制输出，保持当前状态
+                        # 添加阻尼衰减
+                        v = v * 0.95
+                        q = q + v * dt
+                    
+                    # 计算加加速度（用于振动评估）
+                    jerk = (a - a_prev) / dt
+                    vibration_level = np.linalg.norm(jerk)
+                    vibration_levels.append(vibration_level)
+                    a_prev = a.copy()
                 
                 # 计算性能指标
                 avg_tracking_error = np.mean(tracking_errors) if tracking_errors else 1.0
                 max_tracking_error = np.max(tracking_errors) if tracking_errors else 1.0
                 settling_time = self._estimate_settling_time(tracking_errors)
                 overshoot = self._calculate_overshoot(tracking_errors)
+                avg_vibration = np.mean(vibration_levels) if vibration_levels else 0.0
                 
                 # 加权性能分数
                 scenario_score = (
                     self.performance_weights.tracking_accuracy * avg_tracking_error +
                     self.performance_weights.settling_time * settling_time +
                     self.performance_weights.overshoot * overshoot +
-                    self.performance_weights.energy_efficiency * energy_consumption * 1e-6
+                    self.performance_weights.energy_efficiency * energy_consumption * 1e-3 +
+                    self.performance_weights.vibration_suppression * avg_vibration * 1e-2
                 )
                 
                 total_score += scenario_score

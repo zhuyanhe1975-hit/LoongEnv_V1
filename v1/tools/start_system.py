@@ -33,7 +33,8 @@ def check_dependencies():
         return False
     
     # 检查Python依赖 - 使用虚拟环境
-    venv_python = Path(__file__).parent / "venv" / "bin" / "python"
+    project_root = Path(__file__).parent.parent
+    venv_python = project_root / "venv" / "bin" / "python"
     if venv_python.exists():
         python_executable = str(venv_python)
         print(f"使用虚拟环境Python: {python_executable}")
@@ -71,7 +72,9 @@ except ImportError as e:
 
 def install_frontend_dependencies():
     """安装前端依赖"""
-    ui_dir = Path(__file__).parent / "ui"
+    # 脚本在tools/目录，需要回到项目根目录
+    project_root = Path(__file__).parent.parent
+    ui_dir = project_root / "ui"
     
     if not (ui_dir / "node_modules").exists():
         print("安装前端依赖...")
@@ -89,10 +92,12 @@ def install_frontend_dependencies():
 def start_backend():
     """启动后端服务"""
     print("启动后端API服务...")
-    backend_script = Path(__file__).parent / "ui" / "backend_api.py"
+    # 脚本在tools/目录，需要回到项目根目录
+    project_root = Path(__file__).parent.parent
+    backend_script = project_root / "ui" / "backend_api.py"
     
     # 检查是否在虚拟环境中
-    venv_python = Path(__file__).parent / "venv" / "bin" / "python"
+    venv_python = project_root / "venv" / "bin" / "python"
     if venv_python.exists():
         python_executable = str(venv_python)
         print(f"使用虚拟环境Python: {python_executable}")
@@ -124,7 +129,9 @@ def start_backend():
 def start_frontend():
     """启动前端服务"""
     print("启动前端React应用...")
-    ui_dir = Path(__file__).parent / "ui"
+    # 脚本在tools/目录，需要回到项目根目录
+    project_root = Path(__file__).parent.parent
+    ui_dir = project_root / "ui"
     
     try:
         process = subprocess.Popen([

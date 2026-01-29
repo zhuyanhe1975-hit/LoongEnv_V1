@@ -1,0 +1,10 @@
+{
+  "autoSave": true,
+  "debugMode": false,
+  "language": "zh-CN",
+  "logLevel": "info",
+  "notifications": true,
+  "safetyMode": true,
+  "theme": "light",
+  "updateInterval": 100
+}

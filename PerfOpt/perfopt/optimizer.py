@@ -18,21 +18,13 @@ from scipy.optimize import minimize, differential_evolution, basinhopping
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 import warnings
 
-# 导入字体配置
-try:
-    from ..utils.font_config import auto_configure_font
-    # 自动配置字体
-    font_success, label_map = auto_configure_font()
-except ImportError:
-    print("警告: 无法导入字体配置模块，使用默认字体")
-    font_success = False
-    label_map = {}
+# 字体配置已移除（精简版不需要）
 
-from ..core.types import (
+from .models import (
     RobotState, TrajectoryPoint, Trajectory, PerformanceMetrics,
     PayloadInfo, KinodynamicLimits, Vector, Matrix
 )
-from ..core.models import RobotModel
+from .models import RobotModel
 
 
 class OptimizationMethod(Enum):

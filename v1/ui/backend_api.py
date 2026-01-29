@@ -378,16 +378,33 @@ def start_parameter_tuning():
                 
                 with tuning_lock:
                     tuning_status["progress"] = 100
+                    
+                    # 安全地转换结果，处理NaN和Inf
+                    def safe_convert(value):
+                        """安全转换数值，处理NaN和Inf"""
+                        if isinstance(value, (np.ndarray, list)):
+                            return [safe_convert(v) for v in value]
+                        elif isinstance(value, dict):
+                            return {k: safe_convert(v) for k, v in value.items()}
+                        elif isinstance(value, (float, np.floating)):
+                            if np.isnan(value) or np.isinf(value):
+                                return None  # 或者返回一个默认值
+                            return float(value)
+                        elif isinstance(value, (int, np.integer)):
+                            return int(value)
+                        else:
+                            return value
+                    
                     tuning_status["results"] = {
                     "success": True,
-                    "overallImprovement": report.overall_performance_improvement,
+                    "overallImprovement": safe_convert(report.overall_performance_improvement),
                     "results": {
                         param_type.value: {
                             "success": result.success,
-                            "bestPerformance": result.best_performance,
-                            "computationTime": result.computation_time,
+                            "bestPerformance": safe_convert(result.best_performance),
+                            "computationTime": safe_convert(result.computation_time),
                             "optimalParameters": {
-                                k: v.tolist() if isinstance(v, np.ndarray) else v
+                                k: safe_convert(v)
                                 for k, v in result.optimal_parameters.items()
                             }
                         }

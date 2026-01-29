@@ -1,0 +1,30 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Robot head -->
+  <rect x="7" y="3" width="10" height="8" rx="2" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+  
+  <!-- Robot eyes -->
+  <circle cx="10" cy="6" r="1" fill="white"/>
+  <circle cx="14" cy="6" r="1" fill="white"/>
+  
+  <!-- Robot antenna -->
+  <line x1="12" y1="3" x2="12" y2="1" stroke="currentColor" stroke-width="1"/>
+  <circle cx="12" cy="1" r="0.5" fill="currentColor"/>
+  
+  <!-- Robot body -->
+  <rect x="8" y="11" width="8" height="6" rx="1" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+  
+  <!-- Robot arms -->
+  <rect x="5" y="12" width="3" height="1.5" rx="0.5" fill="currentColor"/>
+  <rect x="16" y="12" width="3" height="1.5" rx="0.5" fill="currentColor"/>
+  
+  <!-- Robot legs -->
+  <rect x="9" y="17" width="1.5" height="4" rx="0.5" fill="currentColor"/>
+  <rect x="13.5" y="17" width="1.5" height="4" rx="0.5" fill="currentColor"/>
+  
+  <!-- Robot feet -->
+  <rect x="8.5" y="21" width="2.5" height="1" rx="0.5" fill="currentColor"/>
+  <rect x="13" y="21" width="2.5" height="1" rx="0.5" fill="currentColor"/>
+  
+  <!-- Robot mouth -->
+  <rect x="10.5" y="8" width="3" height="0.5" rx="0.25" fill="white"/>
+</svg>

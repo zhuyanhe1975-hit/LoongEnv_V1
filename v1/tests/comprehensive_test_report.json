@@ -1,0 +1,39 @@
+{
+  "timestamp": "2026-01-28 19:21:56",
+  "total_duration": 16.479339122772217,
+  "test_results": {
+    "基础集成测试": {
+      "success": true,
+      "duration": 5.572930574417114,
+      "output": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /home/yhzhu/LoongEnv/v1/venv/bin/python\ncachedir: .pytest_cache\nhypothesis profile 'default'\nrootdir: /home/yhzhu/LoongEnv/v1\nconfigfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)\nplugins: hypothesis-6.151.2\ncollecting ... collected 7 items\n\ntests/test_integration_basic.py::TestBasicIntegration::test_robot_model_creation PASSED\ntests/test_integration_basic.py::TestBasicIntegration::test_dynamics_engine_basic PASSED\ntests/test_integration_basic.py::TestBasicIntegration::test_trajectory_planner_basic PASSED\ntests/test_integration_basic.py::TestBasicIntegration::test_path_controller_basic PASSED\ntests/test_integration_basic.py::TestBasicIntegration::test_vibration_suppressor_basic PASSED\ntests/test_integration_basic.py::TestBasicIntegration::test_robot_motion_controller_basic PASSED\ntests/test_integration_basic.py::TestBasicIntegration::test_end_to_end_workflow SKIPPED\n\n=================== 6 passed, 1 skipped, 7 warnings in 4.17s ===================\n",
+      "error": null,
+      "return_code": 0
+    },
+    "综合测试场景": {
+      "success": false,
+      "duration": 1.411548376083374,
+      "output": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /home/yhzhu/LoongEnv/v1/venv/bin/python\ncachedir: .pytest_cache\nhypothesis profile 'default'\nrootdir: /home/yhzhu/LoongEnv/v1\nconfigfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)\nplugins: hypothesis-6.151.2\ncollecting ... collected 0 items\n\n============================= 6 warnings in 0.01s ==============================\n",
+      "error": "",
+      "return_code": 5
+    },
+    "极限条件测试": {
+      "success": true,
+      "duration": 2.212481737136841,
+      "output": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /home/yhzhu/LoongEnv/v1/venv/bin/python\ncachedir: .pytest_cache\nhypothesis profile 'default'\nrootdir: /home/yhzhu/LoongEnv/v1\nconfigfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)\nplugins: hypothesis-6.151.2\ncollecting ... collected 8 items\n\ntests/test_extreme_conditions.py::TestExtremeConditions::test_high_speed_motion_limits SKIPPED\ntests/test_extreme_conditions.py::TestExtremeConditions::test_near_singularity_robustness \n测试接近奇异点的鲁棒性...\n  ✓ 奇异点附近轨迹规划成功\nPASSED\ntests/test_extreme_conditions.py::TestExtremeConditions::test_joint_limit_boundary_behavior \n测试关节限制边界行为...\n  测试关节 1 边界...\n    ✓ 关节 1 边界测试通过\n  测试关节 2 边界...\n    ✓ 关节 2 边界测试通过\n  测试关节 3 边界...\n    ✓ 关节 3 边界测试通过\n  测试关节 4 边界...\n    ✓ 关节 4 边界测试通过\n  测试关节 5 边界...\n    ✓ 关节 5 边界测试通过\n  测试关节 6 边界...\n    ✓ 关节 6 边界测试通过\nPASSED\ntests/test_extreme_conditions.py::TestExtremeConditions::test_rapid_direction_changes SKIPPED\ntests/test_extreme_conditions.py::TestExtremeConditions::test_numerical_stability_stress \n测试数值稳定性压力...\n  ✓ 数值稳定性测试通过\n  ✓ 算法确定性验证通过\nPASSED\ntests/test_extreme_conditions.py::TestExtremeConditions::test_memory_stress_conditions \n测试内存压力条件...\n  批次 1/10, 内存使用: 168.6MB\n  批次 4/10, 内存使用: 172.7MB\n  批次 7/10, 内存使用: 177.7MB\n  批次 10/10, 内存使用: 182.6MB\n  ✓ 内存增长: 15.6MB (9.3%)\n  ✓ 处理轨迹数: 10\nPASSED\ntests/test_extreme_conditions.py::TestExtremeConditions::test_concurrent_execution_stress \n测试并发执行压力...\n  ✓ 并发线程数: 4\n  ✓ 完成任务数: 20\n  ✓ 错误数: 0\nPASSED\ntests/test_extreme_conditions.py::TestExtremeConditions::test_extreme_payload_conditions \n测试极端负载条件...\n  测试极端负载 1: 质量=0.0kg\n    ✓ 适应时间: 0.006s\n  测试极端负载 2: 质量=50.0kg\n    ✓ 适应时间: 0.008s\n  测试极端负载 3: 质量=15.0kg\n    ✓ 适应时间: 0.009s\nPASSED\n\n=================== 6 passed, 2 skipped, 7 warnings in 0.85s ===================\n",
+      "error": null,
+      "return_code": 0
+    },
+    "性能基准测试": {
+      "success": true,
+      "duration": 7.2818403244018555,
+      "output": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /home/yhzhu/LoongEnv/v1/venv/bin/python\ncachedir: .pytest_cache\nhypothesis profile 'default'\nrootdir: /home/yhzhu/LoongEnv/v1\nconfigfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)\nplugins: hypothesis-6.151.2\ncollecting ... collected 6 items\n\ntests/test_performance_benchmarks.py::TestPerformanceBenchmarks::test_trajectory_planning_performance_benchmark \n执行轨迹规划性能基准测试...\n  测试用例: simple_3_points\n    ✓ 平均时间: 0.040s (±0.037s)\n    ✓ 吞吐量: 75.7 waypoints/s\n  测试用例: medium_10_points\n    ✓ 平均时间: 0.119s (±0.001s)\n    ✓ 吞吐量: 84.3 waypoints/s\n  测试用例: complex_25_points\n    ✓ 平均时间: 0.339s (±0.036s)\n    ✓ 吞吐量: 73.8 waypoints/s\n\n=== 轨迹规划 性能报告 ===\n\nsimple_3_points:\n  执行时间: 0.039614s\n  吞吐量: 75.73\n  成功率: 100.0%\n  误差指标:\n    std_time: 0.036721\n    max_time: 0.105294\n  附加指标:\n    waypoint_count: 3\n\nmedium_10_points:\n  执行时间: 0.118654s\n  吞吐量: 84.28\n  成功率: 100.0%\n  误差指标:\n    std_time: 0.000925\n    max_time: 0.119691\n  附加指标:\n    waypoint_count: 10\n\ncomplex_25_points:\n  执行时间: 0.338788s\n  吞吐量: 73.79\n  成功率: 100.0%\n  误差指标:\n    std_time: 0.035574\n    max_time: 0.384789\n  附加指标:\n    waypoint_count: 25\nPASSED\ntests/test_performance_benchmarks.py::TestPerformanceBenchmarks::test_path_control_performance_benchmark \n执行路径控制性能基准测试...\n  执行 1000 次控制计算...\n    ✓ 平均时间: 0.029ms\n    ✓ P95时间: 0.052ms\n    ✓ P99时间: 0.061ms\n    ✓ 平均跟踪误差: 0.000000\n    ✓ 控制频率: 34804 Hz\nPASSED\ntests/test_performance_benchmarks.py::TestPerformanceBenchmarks::test_dynamics_computation_benchmark \n执行动力学计算性能基准测试...\n  测试 inverse_dynamics...\n    ✓ 平均时间: 0.002ms\n    ✓ P95时间: 0.003ms\n    ✓ 计算频率: 535945 Hz\n  测试 forward_dynamics...\n    ✓ 平均时间: 0.004ms\n    ✓ P95时间: 0.004ms\n    ✓ 计算频率: 272889 Hz\n  测试 jacobian...\n    ✓ 平均时间: 0.012ms\n    ✓ P95时间: 0.013ms\n    ✓ 计算频率: 81601 Hz\n  测试 gravity_compensation...\n    ✓ 平均时间: 0.002ms\n    ✓ P95时间: 0.002ms\n    ✓ 计算频率: 527585 Hz\nPASSED\ntests/test_performance_benchmarks.py::TestPerformanceBenchmarks::test_parallel_computing_benchmark \n执行并行计算性能基准测试...\n  测试批次大小: 1\n    ✓ 串行时间: 0.030s\n    ✓ 并行时间: 0.031s\n    ✓ 加速比: 0.97x\n    ✓ 效率: 97.2%\n    并行计算结果记录完成\n  测试批次大小: 4\n    ✓ 串行时间: 0.127s\n    ✓ 并行时间: 0.128s\n    ✓ 加速比: 0.99x\n    ✓ 效率: 24.8%\n    并行计算结果记录完成\n  测试批次大小: 8\n    ✓ 串行时间: 0.260s\n    ✓ 并行时间: 0.311s\n    ✓ 加速比: 0.84x\n    ✓ 效率: 20.9%\n    并行计算结果记录完成\n  测试批次大小: 16\n    ✓ 串行时间: 0.510s\n    ✓ 并行时间: 0.561s\n    ✓ 加速比: 0.91x\n    ✓ 效率: 22.7%\n    并行计算结果记录完成\n\n=== 并行性能趋势分析 ===\n批次大小: [1, 4, 8, 16]\n加速比: ['0.97x', '0.99x', '0.84x', '0.91x']\n效率: ['97.2%', '24.8%', '20.9%', '22.7%']\n加速比趋势: 递减\n效率趋势: 递减\n最佳批次大小: 1 (效率: 97.2%)\nPASSED\ntests/test_performance_benchmarks.py::TestPerformanceBenchmarks::test_memory_usage_benchmark \n执行内存使用基准测试...\n  测试 small_trajectories...\n    ✓ 内存增长: 0.0MB\n    ✓ 内存保留: -1.0MB\n    ✓ 内存效率: inf waypoints/MB\n  测试 medium_trajectories...\n    ✓ 内存增长: -7.0MB\n    ✓ 内存保留: -7.0MB\n    ✓ 内存效率: inf waypoints/MB\n  测试 large_trajectories...\n    ✓ 内存增长: -2.0MB\n    ✓ 内存保留: -2.0MB\n    ✓ 内存效率: inf waypoints/MB\nPASSED\ntests/test_performance_benchmarks.py::TestPerformanceBenchmarks::test_real_time_performance_benchmark \n执行实时性能基准测试...\n  仿真实时控制循环 (频率: 1000.0Hz)...\n    ✓ 平均计算时间: 0.185ms\n    ✓ P99计算时间: 3.187ms\n    ✓ 最大计算时间: 8.307ms\n    ✓ 平均时序抖动: 0.203ms\n    ✓ 实时性能裕度: -218.7%\nPASSED\n\n======================== 6 passed, 7 warnings in 5.86s =========================\n",
+      "error": null,
+      "return_code": 0
+    }
+  },
+  "summary": {
+    "total_suites": 4,
+    "passed_suites": 3,
+    "success_rate": 0.75
+  }
+}

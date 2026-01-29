@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-01-28T12:58:53.902806",
+  "system_info": {
+    "cpu_count": 20,
+    "memory_total": 62.06898498535156,
+    "python_version": "3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0]"
+  },
+  "performance_metrics": [
+    {
+      "test_name": "trajectory_planning",
+      "execution_time_stats": {
+        "mean": 0.12847405780445445,
+        "std": 0.07936764200596955,
+        "min": 0.06788969039916992,
+        "max": 0.34534454345703125,
+        "p95": 0.31718738079071046,
+        "p99": 0.34381540298461916
+      },
+      "throughput": 7.7836725724197375,
+      "memory_usage": {
+        "peak": 276.7265625,
+        "retained": 140.59375,
+        "efficiency": 12.83136556025841
+      },
+      "cpu_usage": 0.0,
+      "success_rate": 1.0,
+      "error_metrics": {},
+      "timestamp": "2026-01-28T12:58:48.114973"
+    },
+    {
+      "test_name": "dynamics_computation",
+      "execution_time_stats": {
+        "mean": 3.070414066314697e-06,
+        "std": 2.4944302984507827e-06,
+        "min": 9.5367431640625e-07,
+        "max": 9.5367431640625e-06,
+        "p95": 7.3909759521484375e-06,
+        "p99": 7.62939453125e-06
+      },
+      "throughput": 325688.97171587753,
+      "memory_usage": {
+        "peak": 237.83984375,
+        "retained": 0.46875,
+        "efficiency": 8533.333333333334
+      },
+      "cpu_usage": 0.0,
+      "success_rate": 1.0,
+      "error_metrics": {},
+      "timestamp": "2026-01-28T12:58:48.151123"
+    },
+    {
+      "test_name": "path_control",
+      "execution_time_stats": {
+        "mean": 1.3654041290283203e-05,
+        "std": 1.7752599992129198e-06,
+        "min": 1.2874603271484375e-05,
+        "max": 0.00013589859008789062,
+        "p95": 1.430511474609375e-05,
+        "p99": 1.52587890625e-05
+      },
+      "throughput": 73238.38991988714,
+      "memory_usage": {
+        "peak": 233.83984375,
+        "retained": 0.0,
+        "efficiency": 0
+      },
+      "cpu_usage": 0.0,
+      "success_rate": 1.0,
+      "error_metrics": {
+        "mean_tracking_error": 0,
+        "max_tracking_error": 0,
+        "p95_tracking_error": 0
+      },
+      "timestamp": "2026-01-28T12:58:48.221719"
+    }
+  ],
+  "complexity_analysis": [
+    {
+      "algorithm_name": "trajectory_planning",
+      "input_sizes": [
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        40,
+        50
+      ],
+      "execution_times": [
+        0.026594114303588868,
+        0.05177340507507324,
+        0.08409571647644043,
+        0.11273188591003418,
+        0.14232025146484376,
+        0.17727065086364746,
+        0.2336275577545166,
+        0.2915832042694092
+      ],
+      "complexity_order": "O(n log n)",
+      "regression_r2": 0.9946885186500414,
+      "scaling_factor": 0.0014122328476329586
+    }
+  ]
+}

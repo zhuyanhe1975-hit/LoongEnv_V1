@@ -1,0 +1,52 @@
+{
+  "name": "robot-control-ui",
+  "version": "1.0.0",
+  "description": "Modern UI for Robot Motion Control System",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@mui/material": "^5.14.20",
+    "@mui/icons-material": "^5.14.19",
+    "@mui/x-charts": "^6.18.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@reduxjs/toolkit": "^1.9.7",
+    "react-redux": "^8.1.3",
+    "@tanstack/react-query": "^4.36.1",
+    "react-router-dom": "^6.18.0",
+    "@react-three/fiber": "^8.15.11",
+    "@react-three/drei": "^9.88.13",
+    "three": "^0.158.0",
+    "recharts": "^2.8.0",
+    "framer-motion": "^10.16.5",
+    "socket.io-client": "^4.7.4",
+    "axios": "^1.6.2",
+    "date-fns": "^2.30.0",
+    "react-hook-form": "^7.48.2",
+    "zod": "^3.22.4",
+    "@hookform/resolvers": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@types/three": "^0.158.3",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "@vitejs/plugin-react": "^4.1.1",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "prettier": "^3.1.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.5.0"
+  }
+}

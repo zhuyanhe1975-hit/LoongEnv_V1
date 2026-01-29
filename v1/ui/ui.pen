@@ -1,0 +1,1892 @@
+{
+  "version": "2.6",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Robot Motion Control UI (Pencil)",
+      "width": 800,
+      "height": 600,
+      "fill": {
+        "type": "color",
+        "color": "#000000",
+        "enabled": false
+      },
+      "layout": "vertical",
+      "gap": 120,
+      "padding": 120,
+      "children": [
+        {
+          "type": "frame",
+          "id": "5098x",
+          "name": "Components",
+          "width": 1600,
+          "fill": "$--bg-default",
+          "cornerRadius": 16,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$--divider"
+          },
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "OGlL8",
+              "name": "AppBar",
+              "reusable": true,
+              "width": "fill_container",
+              "height": 64,
+              "fill": "$--bg-paper",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$--divider"
+              },
+              "gap": 16,
+              "padding": [
+                0,
+                24
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "nCDzy",
+                  "name": "Left",
+                  "fill": {
+                    "type": "color",
+                    "color": "#000000",
+                    "enabled": false
+                  },
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "14qXv",
+                      "name": "Title",
+                      "fill": "$--text-primary",
+                      "content": "机器人运动控制系统",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ZYPOo",
+                  "name": "Right",
+                  "fill": {
+                    "type": "color",
+                    "color": "#000000",
+                    "enabled": false
+                  },
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "dl6Im",
+                      "name": "Conn",
+                      "fill": "$--text-secondary",
+                      "content": "未连接",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "TGQED",
+                      "name": "Conn Button",
+                      "cornerRadius": "$--radius-button",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--divider"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "tGbGt",
+                          "name": "appBtnText",
+                          "fill": "$--text-primary",
+                          "content": "连接管理",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "zuVIA",
+              "name": "StatusBar",
+              "reusable": true,
+              "width": "fill_container",
+              "height": 40,
+              "fill": "$--bg-paper",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "$--divider"
+              },
+              "gap": 12,
+              "padding": [
+                0,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "CuGck",
+                  "name": "Status Chip",
+                  "cornerRadius": 999,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--divider"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "8oebj",
+                      "name": "Dot",
+                      "fill": "$--error",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "AZpeF",
+                      "name": "statusText",
+                      "fill": "$--text-primary",
+                      "content": "未连接",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "A6QU5",
+                  "name": "Spacer",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": {
+                    "type": "color",
+                    "color": "#000000",
+                    "enabled": false
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "K20fR",
+                  "name": "Meta",
+                  "fill": "$--text-secondary",
+                  "content": "当前页面: dashboard · 更新: 从未",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ERajO",
+              "name": "Card",
+              "reusable": true,
+              "width": 520,
+              "fill": "$--bg-paper",
+              "cornerRadius": "$--radius-card",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--divider"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "dxKs4",
+                  "name": "Header",
+                  "fill": {
+                    "type": "color",
+                    "color": "#000000",
+                    "enabled": false
+                  },
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "OwrMr",
+                      "name": "Card Title",
+                      "fill": "$--text-primary",
+                      "content": "Card Title",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SefWk",
+                  "name": "Body",
+                  "fill": {
+                    "type": "color",
+                    "color": "#000000",
+                    "enabled": false
+                  },
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "yp2Yg",
+                      "name": "cardBodyText",
+                      "fill": "$--text-secondary",
+                      "content": "内容区域",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "0jvS8",
+              "name": "Sidebar",
+              "reusable": true,
+              "width": 280,
+              "height": 720,
+              "fill": "$--bg-paper",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "right": 1
+                },
+                "fill": "$--divider"
+              },
+              "layout": "vertical",
+              "gap": 16,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ib9Ih",
+                  "name": "Brand",
+                  "fill": {
+                    "type": "color",
+                    "color": "#000000",
+                    "enabled": false
+                  },
+                  "gap": 12,
+                  "padding": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "KOae7",
+                      "name": "Logo",
+                      "fill": "$--primary",
+                      "width": 28,
+                      "height": 28
+                    },
+                    {
+                      "type": "frame",
+                      "id": "TT0rZ",
+                      "name": "Brand Text",
+                      "fill": {
+                        "type": "color",
+                        "color": "#000000",
+                        "enabled": false
+                      },
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "IdNDK",
+                          "name": "brandTitle",
+                          "fill": "$--text-primary",
+                          "content": "RobotControl",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "XWQUL",
+                          "name": "brandVer",
+                          "fill": "$--text-secondary",
+                          "content": "v1.0.0",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "bTY5z",
+                  "name": "Nav",
+                  "fill": {
+                    "type": "color",
+                    "color": "#000000",
+                    "enabled": false
+                  },
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": [
+                    8,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "f4VR1",
+                      "name": "Nav Item",
+                      "fill": "#2196F3",
+                      "cornerRadius": 10,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#00000000"
+                      },
+                      "gap": 10,
+                      "padding": [
+                        10,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 4,
+                          "id": "oPYvN",
+                          "name": "Icon",
+                          "fill": "#ffffff33",
+                          "width": 18,
+                          "height": 18
+                        },
+                        {
+                          "type": "text",
+                          "id": "TtyhV",
+                          "name": "itemDashText",
+                          "fill": "$--text-primary",
+                          "content": "仪表板",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "66yqr",
+                      "name": "Nav Item",
+                      "cornerRadius": 10,
+                      "gap": 10,
+                      "padding": [
+                        10,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 4,
+                          "id": "jitdW",
+                          "name": "Icon",
+                          "fill": "#ffffff1a",
+                          "width": 18,
+                          "height": 18
+                        },
+                        {
+                          "type": "text",
+                          "id": "pBFFP",
+                          "name": "itemMonText",
+                          "fill": "$--text-secondary",
+                          "content": "实时监控",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "OGsOR",
+                      "name": "Nav Item",
+                      "cornerRadius": 10,
+                      "gap": 10,
+                      "padding": [
+                        10,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 4,
+                          "id": "Lebv4",
+                          "name": "Icon",
+                          "fill": "#ffffff1a",
+                          "width": 18,
+                          "height": 18
+                        },
+                        {
+                          "type": "text",
+                          "id": "7ChHM",
+                          "name": "itemPlanText",
+                          "fill": "$--text-secondary",
+                          "content": "轨迹规划",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "4xghb",
+                      "name": "Nav Item",
+                      "cornerRadius": 10,
+                      "gap": 10,
+                      "padding": [
+                        10,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 4,
+                          "id": "8JwUB",
+                          "name": "Icon",
+                          "fill": "#ffffff1a",
+                          "width": 18,
+                          "height": 18
+                        },
+                        {
+                          "type": "text",
+                          "id": "paUdX",
+                          "name": "itemTuneText",
+                          "fill": "$--text-secondary",
+                          "content": "参数调优",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "BENRk",
+                      "name": "Nav Item",
+                      "cornerRadius": 10,
+                      "gap": 10,
+                      "padding": [
+                        10,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 4,
+                          "id": "7CWos",
+                          "name": "Icon",
+                          "fill": "#ffffff1a",
+                          "width": 18,
+                          "height": 18
+                        },
+                        {
+                          "type": "text",
+                          "id": "Gnw5y",
+                          "name": "itemSetText",
+                          "fill": "$--text-secondary",
+                          "content": "系统设置",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "uuiD5",
+                  "name": "Footer",
+                  "fill": {
+                    "type": "color",
+                    "color": "#000000",
+                    "enabled": false
+                  },
+                  "layout": "vertical",
+                  "gap": 2,
+                  "padding": [
+                    12,
+                    8
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "nepbR",
+                      "name": "footerName",
+                      "fill": "$--text-primary",
+                      "content": "User",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "G8SX3",
+                      "name": "footerEmail",
+                      "fill": "$--text-secondary",
+                      "content": "user@example.com",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "mUnZ4",
+          "name": "Screens",
+          "fill": {
+            "type": "color",
+            "color": "#000000",
+            "enabled": false
+          },
+          "gap": 200,
+          "children": [
+            {
+              "type": "frame",
+              "id": "ppGuf",
+              "name": "Dashboard",
+              "width": 1440,
+              "height": 900,
+              "fill": "$--bg-default",
+              "cornerRadius": 16,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--divider"
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "id": "AkMCM",
+                  "type": "ref",
+                  "ref": "OGlL8",
+                  "name": "AppBar",
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 64
+                },
+                {
+                  "id": "pwDcF",
+                  "type": "ref",
+                  "ref": "0jvS8",
+                  "name": "Sidebar",
+                  "x": 0,
+                  "y": 64,
+                  "width": 280,
+                  "height": 836
+                },
+                {
+                  "type": "frame",
+                  "id": "W5HPD",
+                  "x": 280,
+                  "y": 64,
+                  "name": "Main",
+                  "width": 1160,
+                  "height": 836,
+                  "fill": {
+                    "type": "color",
+                    "color": "#000000",
+                    "enabled": false
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "lalh8",
+                      "name": "Scroll",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "fill": {
+                        "type": "color",
+                        "color": "#000000",
+                        "enabled": false
+                      },
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "azmnn",
+                          "name": "Page Header",
+                          "fill": {
+                            "type": "color",
+                            "color": "#000000",
+                            "enabled": false
+                          },
+                          "layout": "vertical",
+                          "gap": 6,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "HaYfE",
+                              "name": "dH1",
+                              "fill": "$--text-primary",
+                              "content": "仪表板",
+                              "fontFamily": "Inter",
+                              "fontSize": 28,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "tUlfc",
+                              "name": "dSub",
+                              "fill": "$--text-secondary",
+                              "content": "机器人运动控制系统概览",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "twKVa",
+                          "type": "ref",
+                          "ref": "ERajO",
+                          "width": "fill_container",
+                          "height": 280,
+                          "name": "d3d",
+                          "descendants": {
+                            "OwrMr": {
+                              "content": "3D 机器人视图"
+                            },
+                            "yp2Yg": {
+                              "content": "Robot3DViewer（Three.js）"
+                            }
+                          }
+                        },
+                        {
+                          "id": "hgiUd",
+                          "type": "ref",
+                          "ref": "ERajO",
+                          "width": "fill_container",
+                          "height": 160,
+                          "name": "dOverview",
+                          "descendants": {
+                            "OwrMr": {
+                              "content": "系统概览"
+                            },
+                            "yp2Yg": {
+                              "content": "连接状态 · CPU/内存/温度 · 控制频率"
+                            }
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "haJXa",
+                          "name": "Row",
+                          "width": "fill_container",
+                          "fill": {
+                            "type": "color",
+                            "color": "#000000",
+                            "enabled": false
+                          },
+                          "gap": 16,
+                          "children": [
+                            {
+                              "id": "VTRRZ",
+                              "type": "ref",
+                              "ref": "ERajO",
+                              "width": "fill_container",
+                              "height": 220,
+                              "name": "dRobot",
+                              "descendants": {
+                                "OwrMr": {
+                                  "content": "机器人状态"
+                                },
+                                "yp2Yg": {
+                                  "content": "关节角度 · 末端位姿 · 运行模式"
+                                }
+                              }
+                            },
+                            {
+                              "id": "wcCcc",
+                              "type": "ref",
+                              "ref": "ERajO",
+                              "width": "fill_container",
+                              "height": 220,
+                              "name": "dSafety",
+                              "descendants": {
+                                "OwrMr": {
+                                  "content": "安全状态"
+                                },
+                                "yp2Yg": {
+                                  "content": "碰撞检测 · 安全模式 · 报警"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "q2pBP",
+                          "name": "Row",
+                          "width": "fill_container",
+                          "fill": {
+                            "type": "color",
+                            "color": "#000000",
+                            "enabled": false
+                          },
+                          "gap": 16,
+                          "children": [
+                            {
+                              "id": "envOk",
+                              "type": "ref",
+                              "ref": "ERajO",
+                              "width": "fill_container",
+                              "height": 260,
+                              "name": "dPerf",
+                              "descendants": {
+                                "OwrMr": {
+                                  "content": "性能监控"
+                                },
+                                "yp2Yg": {
+                                  "content": "CPU/内存/延迟 图表（PerformanceChart）"
+                                }
+                              }
+                            },
+                            {
+                              "id": "rdbde",
+                              "type": "ref",
+                              "ref": "ERajO",
+                              "width": 340,
+                              "height": 260,
+                              "name": "dActions",
+                              "descendants": {
+                                "OwrMr": {
+                                  "content": "快捷操作"
+                                },
+                                "yp2Yg": {
+                                  "content": "启动/停止 · 急停 · 复位（QuickActionsCard）"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "LXofJ",
+                          "type": "ref",
+                          "ref": "ERajO",
+                          "width": "fill_container",
+                          "height": 200,
+                          "name": "dTasks",
+                          "descendants": {
+                            "OwrMr": {
+                              "content": "最近任务"
+                            },
+                            "yp2Yg": {
+                              "content": "任务列表 · 状态 · 时间（RecentTasksList）"
+                            }
+                          }
+                        },
+                        {
+                          "id": "b2LAt",
+                          "type": "ref",
+                          "ref": "ERajO",
+                          "width": "fill_container",
+                          "height": 160,
+                          "name": "dDiag",
+                          "descendants": {
+                            "OwrMr": {
+                              "content": "诊断（临时）"
+                            },
+                            "yp2Yg": {
+                              "content": "DiagnosticViewer（调试用）"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "MZR52",
+                      "type": "ref",
+                      "ref": "zuVIA",
+                      "name": "StatusBar",
+                      "width": "fill_container",
+                      "height": 40,
+                      "descendants": {
+                        "K20fR": {
+                          "content": "当前页面: dashboard · 更新: 从未"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "nAA5q",
+              "name": "Monitoring",
+              "width": 1440,
+              "height": 900,
+              "fill": "$--bg-default",
+              "cornerRadius": 16,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--divider"
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "id": "xTaov",
+                  "type": "ref",
+                  "ref": "OGlL8",
+                  "name": "AppBar",
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 64
+                },
+                {
+                  "id": "R4cOZ",
+                  "type": "ref",
+                  "ref": "0jvS8",
+                  "name": "Sidebar",
+                  "x": 0,
+                  "y": 64,
+                  "width": 280,
+                  "height": 836,
+                  "descendants": {
+                    "f4VR1": {
+                      "fill": {
+                        "type": "color",
+                        "color": "#000000",
+                        "enabled": false
+                      }
+                    },
+                    "TtyhV": {
+                      "fill": "$--text-secondary"
+                    },
+                    "66yqr": {
+                      "fill": "#2196F3"
+                    },
+                    "jitdW": {
+                      "fill": "#ffffff33"
+                    },
+                    "pBFFP": {
+                      "fill": "$--text-primary"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "ZktT1",
+                  "x": 280,
+                  "y": 64,
+                  "name": "Main",
+                  "width": 1160,
+                  "height": 836,
+                  "fill": {
+                    "type": "color",
+                    "color": "#000000",
+                    "enabled": false
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "lrQUw",
+                      "name": "Scroll",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "fill": {
+                        "type": "color",
+                        "color": "#000000",
+                        "enabled": false
+                      },
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "RJr7a",
+                          "name": "Page Header",
+                          "fill": {
+                            "type": "color",
+                            "color": "#000000",
+                            "enabled": false
+                          },
+                          "layout": "vertical",
+                          "gap": 6,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Kk6bT",
+                              "name": "mH1",
+                              "fill": "$--text-primary",
+                              "content": "系统监控",
+                              "fontFamily": "Inter",
+                              "fontSize": 28,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "hc1DS",
+                          "name": "Top Row",
+                          "width": "fill_container",
+                          "fill": {
+                            "type": "color",
+                            "color": "#000000",
+                            "enabled": false
+                          },
+                          "gap": 16,
+                          "children": [
+                            {
+                              "id": "SQRkG",
+                              "type": "ref",
+                              "ref": "ERajO",
+                              "width": "fill_container",
+                              "height": 280,
+                              "name": "m3d",
+                              "descendants": {
+                                "OwrMr": {
+                                  "content": "3D 机器人视图"
+                                },
+                                "yp2Yg": {
+                                  "content": "Robot3DViewer + 监控覆盖层"
+                                }
+                              }
+                            },
+                            {
+                              "id": "JlO1r",
+                              "type": "ref",
+                              "ref": "ERajO",
+                              "width": "fill_container",
+                              "height": 280,
+                              "name": "mStats",
+                              "descendants": {
+                                "OwrMr": {
+                                  "content": "系统状态"
+                                },
+                                "yp2Yg": {
+                                  "content": "CPU 45% · 内存 62% · 温度 38°C（示例）"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "zDQmQ",
+                          "type": "ref",
+                          "ref": "ERajO",
+                          "width": "fill_container",
+                          "height": 200,
+                          "name": "mAlerts",
+                          "descendants": {
+                            "OwrMr": {
+                              "content": "系统警报"
+                            },
+                            "yp2Yg": {
+                              "content": "告警列表：关节温度/系统事件（Alert）"
+                            }
+                          }
+                        },
+                        {
+                          "id": "NUOLb",
+                          "type": "ref",
+                          "ref": "ERajO",
+                          "width": "fill_container",
+                          "height": 320,
+                          "name": "mChart",
+                          "descendants": {
+                            "OwrMr": {
+                              "content": "实时性能监控"
+                            },
+                            "yp2Yg": {
+                              "content": "实时图表占位（CPU/内存/延迟）"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "rOGml",
+                      "type": "ref",
+                      "ref": "zuVIA",
+                      "name": "StatusBar",
+                      "width": "fill_container",
+                      "height": 40,
+                      "descendants": {
+                        "K20fR": {
+                          "content": "当前页面: monitoring · 更新: 从未"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Vnk2B",
+              "name": "Planning",
+              "width": 1440,
+              "height": 900,
+              "fill": "$--bg-default",
+              "cornerRadius": 16,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--divider"
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "id": "vLNiz",
+                  "type": "ref",
+                  "ref": "OGlL8",
+                  "name": "AppBar",
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 64
+                },
+                {
+                  "id": "fcjlU",
+                  "type": "ref",
+                  "ref": "0jvS8",
+                  "name": "Sidebar",
+                  "x": 0,
+                  "y": 64,
+                  "width": 280,
+                  "height": 836,
+                  "descendants": {
+                    "f4VR1": {
+                      "fill": {
+                        "type": "color",
+                        "color": "#000000",
+                        "enabled": false
+                      }
+                    },
+                    "TtyhV": {
+                      "fill": "$--text-secondary"
+                    },
+                    "OGsOR": {
+                      "fill": "#2196F3"
+                    },
+                    "Lebv4": {
+                      "fill": "#ffffff33"
+                    },
+                    "7ChHM": {
+                      "fill": "$--text-primary"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "qC65o",
+                  "x": 280,
+                  "y": 64,
+                  "name": "Main",
+                  "width": 1160,
+                  "height": 836,
+                  "fill": {
+                    "type": "color",
+                    "color": "#000000",
+                    "enabled": false
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "fLsYu",
+                      "name": "Scroll",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "fill": {
+                        "type": "color",
+                        "color": "#000000",
+                        "enabled": false
+                      },
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "4XkVY",
+                          "name": "Page Header",
+                          "fill": {
+                            "type": "color",
+                            "color": "#000000",
+                            "enabled": false
+                          },
+                          "layout": "vertical",
+                          "gap": 6,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "kuJxk",
+                              "name": "pH1",
+                              "fill": "$--text-primary",
+                              "content": "轨迹规划",
+                              "fontFamily": "Inter",
+                              "fontSize": 28,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "OWCY6",
+                          "name": "Main Row",
+                          "width": "fill_container",
+                          "fill": {
+                            "type": "color",
+                            "color": "#000000",
+                            "enabled": false
+                          },
+                          "gap": 16,
+                          "children": [
+                            {
+                              "id": "4UMB5",
+                              "type": "ref",
+                              "ref": "ERajO",
+                              "width": 360,
+                              "height": 520,
+                              "name": "pConfig",
+                              "descendants": {
+                                "OwrMr": {
+                                  "content": "规划配置"
+                                },
+                                "yp2Yg": {
+                                  "content": "算法选择 · 速度/加速度/jerk · 平滑度 · 开始规划"
+                                }
+                              }
+                            },
+                            {
+                              "type": "frame",
+                              "id": "9dKAY",
+                              "name": "Right",
+                              "width": "fill_container",
+                              "fill": {
+                                "type": "color",
+                                "color": "#000000",
+                                "enabled": false
+                              },
+                              "layout": "vertical",
+                              "gap": 16,
+                              "children": [
+                                {
+                                  "id": "c1N0q",
+                                  "type": "ref",
+                                  "ref": "ERajO",
+                                  "width": "fill_container",
+                                  "height": 220,
+                                  "name": "pResult",
+                                  "descendants": {
+                                    "OwrMr": {
+                                      "content": "规划结果"
+                                    },
+                                    "yp2Yg": {
+                                      "content": "轨迹长度 · 执行时间 · 平滑度 · 状态"
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "bjAsE",
+                                  "type": "ref",
+                                  "ref": "ERajO",
+                                  "width": "fill_container",
+                                  "height": 284,
+                                  "name": "pViz",
+                                  "descendants": {
+                                    "OwrMr": {
+                                      "content": "轨迹可视化"
+                                    },
+                                    "yp2Yg": {
+                                      "content": "3D 轨迹预览占位"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "bwBFR",
+                          "type": "ref",
+                          "ref": "ERajO",
+                          "width": "fill_container",
+                          "height": 240,
+                          "name": "pWay",
+                          "descendants": {
+                            "OwrMr": {
+                              "content": "路径点管理"
+                            },
+                            "yp2Yg": {
+                              "content": "添加/删除路径点 · 列表编辑"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "CIHid",
+                      "type": "ref",
+                      "ref": "zuVIA",
+                      "name": "StatusBar",
+                      "width": "fill_container",
+                      "height": 40,
+                      "descendants": {
+                        "K20fR": {
+                          "content": "当前页面: planning · 更新: 从未"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "E4l8F",
+              "name": "Tuning",
+              "width": 1440,
+              "height": 900,
+              "fill": "$--bg-default",
+              "cornerRadius": 16,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--divider"
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "id": "yP4Ry",
+                  "type": "ref",
+                  "ref": "OGlL8",
+                  "name": "AppBar",
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 64
+                },
+                {
+                  "id": "Mp3eP",
+                  "type": "ref",
+                  "ref": "0jvS8",
+                  "name": "Sidebar",
+                  "x": 0,
+                  "y": 64,
+                  "width": 280,
+                  "height": 836,
+                  "descendants": {
+                    "f4VR1": {
+                      "fill": {
+                        "type": "color",
+                        "color": "#000000",
+                        "enabled": false
+                      }
+                    },
+                    "TtyhV": {
+                      "fill": "$--text-secondary"
+                    },
+                    "4xghb": {
+                      "fill": "#2196F3"
+                    },
+                    "8JwUB": {
+                      "fill": "#ffffff33"
+                    },
+                    "paUdX": {
+                      "fill": "$--text-primary"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "9tF77",
+                  "x": 280,
+                  "y": 64,
+                  "name": "Main",
+                  "width": 1160,
+                  "height": 836,
+                  "fill": {
+                    "type": "color",
+                    "color": "#000000",
+                    "enabled": false
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "0aoE2",
+                      "name": "Scroll",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "fill": {
+                        "type": "color",
+                        "color": "#000000",
+                        "enabled": false
+                      },
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "aGKrf",
+                          "name": "Page Header",
+                          "fill": {
+                            "type": "color",
+                            "color": "#000000",
+                            "enabled": false
+                          },
+                          "layout": "vertical",
+                          "gap": 6,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "4ce8f",
+                              "name": "tH1",
+                              "fill": "$--text-primary",
+                              "content": "参数调优",
+                              "fontFamily": "Inter",
+                              "fontSize": 28,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "evuWo",
+                          "type": "ref",
+                          "ref": "ERajO",
+                          "width": "fill_container",
+                          "height": 160,
+                          "name": "tStatusCard",
+                          "descendants": {
+                            "OwrMr": {
+                              "content": "调优状态"
+                            },
+                            "yp2Yg": {
+                              "content": "状态: 空闲/运行中/已完成 · 进度条 · 结果提示"
+                            }
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "06w0u",
+                          "name": "Tabs",
+                          "fill": "$--bg-paper",
+                          "cornerRadius": 999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$--divider"
+                          },
+                          "gap": 8,
+                          "padding": 4,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "vKBaC",
+                              "name": "Tab Active",
+                              "fill": "$--primary",
+                              "cornerRadius": 999,
+                              "padding": [
+                                6,
+                                12
+                              ],
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "HdtIB",
+                                  "name": "tabAText",
+                                  "fill": "$--text-primary",
+                                  "content": "控制增益",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "MvFE4",
+                              "name": "Tab",
+                              "cornerRadius": 999,
+                              "padding": [
+                                6,
+                                12
+                              ],
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "CQeWV",
+                                  "name": "tabBText",
+                                  "fill": "$--text-secondary",
+                                  "content": "优化配置",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "vor5K",
+                              "name": "Tab",
+                              "cornerRadius": 999,
+                              "padding": [
+                                6,
+                                12
+                              ],
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "i8YfI",
+                                  "name": "tabCText",
+                                  "fill": "$--text-secondary",
+                                  "content": "结果分析",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "YuLve",
+                          "name": "Main Row",
+                          "width": "fill_container",
+                          "fill": {
+                            "type": "color",
+                            "color": "#000000",
+                            "enabled": false
+                          },
+                          "gap": 16,
+                          "children": [
+                            {
+                              "id": "eALob",
+                              "type": "ref",
+                              "ref": "ERajO",
+                              "width": 420,
+                              "height": 360,
+                              "name": "tConfig",
+                              "descendants": {
+                                "OwrMr": {
+                                  "content": "调优配置"
+                                },
+                                "yp2Yg": {
+                                  "content": "方法/迭代次数/容差/权重等（TuningConfig）"
+                                }
+                              }
+                            },
+                            {
+                              "id": "rr65H",
+                              "type": "ref",
+                              "ref": "ERajO",
+                              "width": "fill_container",
+                              "height": 360,
+                              "name": "tResults",
+                              "descendants": {
+                                "OwrMr": {
+                                  "content": "优化结果"
+                                },
+                                "yp2Yg": {
+                                  "content": "整体提升% · 建议增益 · 指标对比"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "iMec8",
+                          "type": "ref",
+                          "ref": "ERajO",
+                          "width": "fill_container",
+                          "height": 180,
+                          "name": "tHistory",
+                          "descendants": {
+                            "OwrMr": {
+                              "content": "调优历史 / 日志"
+                            },
+                            "yp2Yg": {
+                              "content": "运行记录 · 警告/错误 · 保存/恢复"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "VbjVT",
+                      "type": "ref",
+                      "ref": "zuVIA",
+                      "name": "StatusBar",
+                      "width": "fill_container",
+                      "height": 40,
+                      "descendants": {
+                        "K20fR": {
+                          "content": "当前页面: tuning · 更新: 从未"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "OPNsx",
+              "name": "Settings",
+              "width": 1440,
+              "height": 900,
+              "fill": "$--bg-default",
+              "cornerRadius": 16,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--divider"
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "id": "1YsQr",
+                  "type": "ref",
+                  "ref": "OGlL8",
+                  "name": "AppBar",
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 64
+                },
+                {
+                  "id": "4Z3NT",
+                  "type": "ref",
+                  "ref": "0jvS8",
+                  "name": "Sidebar",
+                  "x": 0,
+                  "y": 64,
+                  "width": 280,
+                  "height": 836,
+                  "descendants": {
+                    "f4VR1": {
+                      "fill": {
+                        "type": "color",
+                        "color": "#000000",
+                        "enabled": false
+                      }
+                    },
+                    "TtyhV": {
+                      "fill": "$--text-secondary"
+                    },
+                    "BENRk": {
+                      "fill": "#2196F3"
+                    },
+                    "7CWos": {
+                      "fill": "#ffffff33"
+                    },
+                    "Gnw5y": {
+                      "fill": "$--text-primary"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "xt1KS",
+                  "x": 280,
+                  "y": 64,
+                  "name": "Main",
+                  "width": 1160,
+                  "height": 836,
+                  "fill": {
+                    "type": "color",
+                    "color": "#000000",
+                    "enabled": false
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "AJDB2",
+                      "name": "Scroll",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "fill": {
+                        "type": "color",
+                        "color": "#000000",
+                        "enabled": false
+                      },
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ZOimY",
+                          "name": "Page Header",
+                          "fill": {
+                            "type": "color",
+                            "color": "#000000",
+                            "enabled": false
+                          },
+                          "layout": "vertical",
+                          "gap": 6,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "k7Qsw",
+                              "name": "sH1",
+                              "fill": "$--text-primary",
+                              "content": "系统设置",
+                              "fontFamily": "Inter",
+                              "fontSize": 28,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "drQAH",
+                          "name": "Row",
+                          "width": "fill_container",
+                          "fill": {
+                            "type": "color",
+                            "color": "#000000",
+                            "enabled": false
+                          },
+                          "gap": 16,
+                          "children": [
+                            {
+                              "id": "q9DOA",
+                              "type": "ref",
+                              "ref": "ERajO",
+                              "width": "fill_container",
+                              "height": 240,
+                              "name": "uiCard",
+                              "descendants": {
+                                "OwrMr": {
+                                  "content": "界面设置"
+                                },
+                                "yp2Yg": {
+                                  "content": "主题/语言/更新间隔/自动保存"
+                                }
+                              }
+                            },
+                            {
+                              "id": "M7gt0",
+                              "type": "ref",
+                              "ref": "ERajO",
+                              "width": "fill_container",
+                              "height": 240,
+                              "name": "notifCard",
+                              "descendants": {
+                                "OwrMr": {
+                                  "content": "通知设置"
+                                },
+                                "yp2Yg": {
+                                  "content": "启用通知 · 日志级别 · 提示"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "qJMn5",
+                          "name": "Row",
+                          "width": "fill_container",
+                          "fill": {
+                            "type": "color",
+                            "color": "#000000",
+                            "enabled": false
+                          },
+                          "gap": 16,
+                          "children": [
+                            {
+                              "id": "7dX4x",
+                              "type": "ref",
+                              "ref": "ERajO",
+                              "width": "fill_container",
+                              "height": 240,
+                              "name": "secCard",
+                              "descendants": {
+                                "OwrMr": {
+                                  "content": "安全设置"
+                                },
+                                "yp2Yg": {
+                                  "content": "安全模式 · 调试模式 · 警告"
+                                }
+                              }
+                            },
+                            {
+                              "id": "pmtAQ",
+                              "type": "ref",
+                              "ref": "ERajO",
+                              "width": "fill_container",
+                              "height": 240,
+                              "name": "infoCard",
+                              "descendants": {
+                                "OwrMr": {
+                                  "content": "系统信息"
+                                },
+                                "yp2Yg": {
+                                  "content": "版本号 · 构建时间 · 运行时间"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "nSTtd",
+                      "type": "ref",
+                      "ref": "zuVIA",
+                      "name": "StatusBar",
+                      "width": "fill_container",
+                      "height": 40,
+                      "descendants": {
+                        "K20fR": {
+                          "content": "当前页面: settings · 更新: 从未"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "--bg-default": {
+      "type": "color",
+      "value": "#121212"
+    },
+    "--bg-paper": {
+      "type": "color",
+      "value": "#1E1E1E"
+    },
+    "--divider": {
+      "type": "color",
+      "value": "#ffffff1f"
+    },
+    "--error": {
+      "type": "color",
+      "value": "#F44336"
+    },
+    "--font-body": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "--font-title": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#2196F3"
+    },
+    "--radius-button": {
+      "type": "number",
+      "value": 8
+    },
+    "--radius-card": {
+      "type": "number",
+      "value": 12
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#FF9800"
+    },
+    "--success": {
+      "type": "color",
+      "value": "#4CAF50"
+    },
+    "--text-primary": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--text-secondary": {
+      "type": "color",
+      "value": "#B3B3B3"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#FFC107"
+    }
+  }
+}

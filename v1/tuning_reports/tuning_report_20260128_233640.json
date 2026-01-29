@@ -1,0 +1,96 @@
+{
+  "timestamp": "20260128_233640",
+  "robot_model_info": {
+    "n_joints": 6,
+    "model_name": "ER15-1400",
+    "dof": 6
+  },
+  "optimization_config": {
+    "method": "gradient_descent",
+    "max_iterations": 10,
+    "tolerance": 1e-06,
+    "population_size": 5
+  },
+  "performance_weights": {
+    "tracking_accuracy": 0.4,
+    "settling_time": 0.2,
+    "overshoot": 0.15,
+    "energy_efficiency": 0.1,
+    "vibration_suppression": 0.1,
+    "safety_margin": 0.05
+  },
+  "results": {
+    "control_gains": {
+      "optimal_parameters": {
+        "kp": [
+          182.56912911427602,
+          161.36920894289358,
+          772.3113912153044,
+          58.27461324245511,
+          435.61885645338333,
+          293.5609997052217
+        ],
+        "ki": [
+          66.6221705821698,
+          48.059789741436546,
+          11.801648407484896,
+          16.959230746444504,
+          80.2087282734537,
+          68.96405828474322
+        ],
+        "kd": [
+          1.09122348061844,
+          5.162152338274309,
+          23.13525752237374,
+          23.40747607090523,
+          16.468318561288925,
+          43.86980594137757
+        ]
+      },
+      "best_performance": 3.187804440514811,
+      "optimization_history": [
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811,
+        3.187804440514811
+      ],
+      "convergence_info": {
+        "iterations": 19,
+        "final_gradient_norm": 0.0,
+        "function_evaluations": 19
+      },
+      "evaluation_metrics": {
+        "parameter_count": 3,
+        "convergence_rate": 0.95,
+        "stability_margin": 0.8,
+        "robustness_score": 0.85
+      },
+      "computation_time": 6.363718032836914,
+      "success": true,
+      "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL"
+    }
+  },
+  "overall_performance_improvement": 0.0,
+  "recommendations": [
+    "control_gains: 优化效果有限，建议检查参数边界设置"
+  ],
+  "plots_paths": [
+    "tuning_reports/optimization_history_20260128_233640.png",
+    "tuning_reports/performance_comparison_20260128_233640.png"
+  ]
+}

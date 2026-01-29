@@ -141,16 +141,28 @@ cython_debug/
 # VS Code
 .vscode/
 
-# Robot model files
-*.urdf
-*.mjcf
-*.xml
-
 # Simulation data
 simulation_data/
 logs/
 results/
+result/
 
 # Performance profiling
 *.prof
 *.pstats
+
+# Test cache and temporary files
+.hypothesis/
+.pytest_cache/
+*.pyc
+*.pyo
+
+# Tuning reports (keep structure, ignore content)
+tuning_reports/*.png
+tuning_reports/*.json
+tuning_reports/*.md
+
+# Build artifacts
+*.egg-info/
+build/
+dist/

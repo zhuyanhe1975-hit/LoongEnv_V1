@@ -166,3 +166,10 @@ tuning_reports/*.md
 *.egg-info/
 build/
 dist/
+
+# Deployment packages
+LoongEnv_deploy_*.tar.gz
+*.tar.gz
+*.zip
+.tarignore.tmp
+部署说明.txt
